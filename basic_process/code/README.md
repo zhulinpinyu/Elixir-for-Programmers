@@ -28,16 +28,36 @@ send pid, "wonder man"
 spawn 开启独立process
 spawn_link 开启的是child process, 只要一个非正常挂掉，另一个也随之被kill
 
+exit(:bad) 表示非正常挂掉。exit(:normal) 表示正常退出。
+
 ```elixir
 # 增加100个process 10秒后结束
+
 inner_process = fn -> Process.sleep(10_000) end
 outer_process = fn -> spawn(inner_process); exit(:bad) end
 Enum.each(1..100, fn _ -> spawn(outer_process) end)
+
 ################
 
 #process 数量不变：原因就是spawn_link
+
 inner_process = fn -> Process.sleep(10_000) end
 outer_process = fn -> spawn_link(inner_process); exit(:bad) end
 Enum.each(1..100, fn _ -> spawn(outer_process) end)
 ```
 
+## Agents—Simple State Holders
+
+```elixir
+#初始化
+{:ok, pid} = Agent.start_link(fn -> 0 end)
+
+#读取process的值
+Agent.get(pid, fn count -> count end)
+
+#更新process的值
+Agent.update(pid, fn count -> count+1 end)
+
+#读取并更新process的值 (返回值为读取到的值，然后再做的更新)
+Agent.get_and_update(pid, fn count -> {count, count+1} end)
+```
