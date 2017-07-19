@@ -1,6 +1,6 @@
 defmodule Dictionary.WordList do
   def start_link do
-    Agent.start_link(fn -> word_list() end)
+    Agent.start_link(&word_list/0)
   end
 
   def word_list() do
@@ -11,6 +11,6 @@ defmodule Dictionary.WordList do
   end
 
   def random_word(agent) do
-    Agent.get(agent, fn words -> Enum.random(words) end )
+    Agent.get(agent, &Enum.random/1)
   end
 end
