@@ -16,7 +16,7 @@ defmodule Dictionary.Mixfile do
   def application do
     # Specify extra applications you'll use from Erlang/Elixir
     [
-      mod: {Dictionary.Application, []},
+      mod: { Dictionary.Application, [] },
       extra_applications: [:logger]
     ]
   end
