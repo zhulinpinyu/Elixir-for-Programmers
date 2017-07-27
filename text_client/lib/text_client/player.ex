@@ -28,7 +28,6 @@ defmodule TextClient.Player do
 
   defp exit_with_message(msg) do
     IO.puts msg
-    exit(:normal)
   end
 
   defp continue(state) do
