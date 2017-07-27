@@ -8,7 +8,7 @@ use Mix.Config
 # Configures the endpoint
 config :gallows, GallowsWeb.Endpoint,
   url: [host: "localhost"],
-  secret_key_base: "j0SQArP+Io0rtFX53zep8k9J5hSo7Pd6PzPoH/cQKWNZ94Mv2Nsan0hSyeoNSHpI",
+  secret_key_base: "jnna0YqZC2qHtRBkMcqZHujRos+ZzItltlrgdycIjV+sCyM6ik3VfhirZjj/LDia",
   render_errors: [view: GallowsWeb.ErrorView, accepts: ~w(html json)],
   pubsub: [name: Gallows.PubSub,
            adapter: Phoenix.PubSub.PG2]
