@@ -5,6 +5,7 @@
 <p>
   Word so far: <%= @tally.letters |> Enum.join(" ") %>
 </p>
-<form>
-  
-</form>
+<%= form_for @conn, hangman_path(@conn, :make_move), [as: :make_move, method: :put, class: "form-inline"], fn f -> %>
+  <%= text_input(f, :guess, [class: "form-control"]) %>
+  <%= submit("Make next move", [class: "btn btn-default"]) %>
+<% end %>
