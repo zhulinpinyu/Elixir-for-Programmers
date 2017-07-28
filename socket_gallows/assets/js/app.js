@@ -1,4 +1,3 @@
-
+window.Vue = require("vue/dist/vue.js")
 import "phoenix_html"
-
-import HangmanApp from "./hangman_app"
+import "./hangman_app"
